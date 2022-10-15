@@ -1,7 +1,8 @@
 import express from 'express';
-
+import { registerValidator, loginValidator } from './validation.js';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import checkAuth from './utils/checkAuth.js';
 mongoose
   .connect(
     'mongodb+srv://incertus-helga:wwwwww@cluster0.b8g1qcv.mongodb.net/?retryWrites=true&w=majority',
