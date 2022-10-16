@@ -6,7 +6,7 @@ const CommentSchems = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    postId: {
+    ItemId: {
       type: String,
     },
     user: {

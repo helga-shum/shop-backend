@@ -5,6 +5,7 @@ import cors from 'cors';
 import checkAuth from './utils/checkAuth.js';
 import { register, login, getMe } from './controllers/UserController.js';
 import handleValidationErrors from './utils/handleValidationErrors.js';
+import { createComment } from './controllers/CommentController.js';
 mongoose
   .connect(
     'mongodb+srv://incertus-helga:wwwwww@cluster0.b8g1qcv.mongodb.net/?retryWrites=true&w=majority',
@@ -18,10 +19,8 @@ app.use(cors());
 app.post('/auth/login', loginValidator, handleValidationErrors, login);
 app.post('/auth/register', registerValidator, handleValidationErrors, register);
 app.get('/auth/me', checkAuth, getMe);
+app.post('/catalog/:id', checkAuth, createComment);
 
-app.get('/', (req, res) => {
-  res.send('Hello world');
-});
 app.listen(5555, (err) => {
   if (err) {
     return console.log(err);
