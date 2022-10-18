@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+
 const ProductSchems = new mongoose.Schema(
   {
     id: {
@@ -52,4 +53,5 @@ const ProductSchems = new mongoose.Schema(
   },
   { timestamps: true },
 );
+
 export default mongoose.model('Product', ProductSchems);
