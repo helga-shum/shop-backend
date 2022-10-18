@@ -14,7 +14,7 @@ export const getAll = async (req, res) => {
     const search = req.query.search;
     sortObject[sortWith] = 1;
 
-    const products = await Product.find(field)
+    const products = await Product.find({ field, title: { $regex: `${search}`, $options: 'i' } })
       .sort(sortObject)
       .limit(limit * 1)
       .skip((page - 1) * limit)
@@ -28,6 +28,17 @@ export const getAll = async (req, res) => {
     console.log(error);
     res.status(500).json({
       message: 'Can not get products',
+    });
+  }
+};
+export const getPopularProducts = async (req, res) => {
+  try {
+    const products = await Product.find().sort({ order_number: -1 }).limit(3).exec();
+    res.json(products);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Can not get popular products',
     });
   }
 };
