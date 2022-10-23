@@ -22,6 +22,10 @@ const ProductSchems = new mongoose.Schema(
       type: Array,
       required: true,
     },
+    fabric: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
       required: true,

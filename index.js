@@ -21,6 +21,7 @@ app.post('/auth/login', loginValidator, handleValidationErrors, login);
 app.post('/auth/register', registerValidator, handleValidationErrors, register);
 app.get('/auth/me', checkAuth, getMe);
 app.post('/catalog/:id', checkAuth, createComment);
+app.get('/catalog/:id', checkAuth, createComment);
 app.get('/catalog', getAll);
 app.get('/', getPopularProducts);
 
