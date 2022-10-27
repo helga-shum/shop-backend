@@ -5,8 +5,8 @@ import cors from 'cors';
 import checkAuth from './utils/checkAuth.js';
 import { register, login, getMe } from './controllers/UserController.js';
 import handleValidationErrors from './utils/handleValidationErrors.js';
-import { createComment } from './controllers/CommentController.js';
-import { getAll, getPopularProducts } from './controllers/ProductController.js';
+import { createComment, getComments } from './controllers/CommentController.js';
+import { getAll, getOne, getPopularProducts } from './controllers/ProductController.js';
 mongoose
   .connect(
     'mongodb+srv://incertus-helga:wwwwww@cluster0.b8g1qcv.mongodb.net/?retryWrites=true&w=majority',
@@ -21,7 +21,8 @@ app.post('/auth/login', loginValidator, handleValidationErrors, login);
 app.post('/auth/register', registerValidator, handleValidationErrors, register);
 app.get('/auth/me', checkAuth, getMe);
 app.post('/catalog/:id', checkAuth, createComment);
-app.get('/catalog/:id', checkAuth, createComment);
+app.get('/catalog/:id', getOne);
+
 app.get('/catalog', getAll);
 app.get('/', getPopularProducts);
 

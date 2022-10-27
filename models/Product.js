@@ -2,10 +2,6 @@ import mongoose from 'mongoose';
 
 const ProductSchems = new mongoose.Schema(
   {
-    id: {
-      type: String,
-      required: true,
-    },
     imageUrl: {
       type: Array,
       required: true,
